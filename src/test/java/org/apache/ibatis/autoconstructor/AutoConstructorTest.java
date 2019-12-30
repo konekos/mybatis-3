@@ -24,6 +24,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.Reader;
 import java.util.List;
@@ -33,6 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AutoConstructorTest {
   private static SqlSessionFactory sqlSessionFactory;
+  private final static Logger logger = LoggerFactory.getLogger(AutoConstructorTest.class);
 
   @BeforeAll
   static void setUp() throws Exception {
@@ -77,6 +80,8 @@ class AutoConstructorTest {
       final AutoConstructorMapper mapper = sqlSession.getMapper(AutoConstructorMapper.class);
       assertThrows(PersistenceException.class, mapper::getBadSubjects);
     }
+    logger.info("sss");
+
   }
 
   @Test
